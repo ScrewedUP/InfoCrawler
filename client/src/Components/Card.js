@@ -1,7 +1,7 @@
 export default function Card(props) {
   return (
     <div className="flex">
-      <div className="h-80 w-72 bg-gradient-to-r from-slate-50 to-gray-400 flex flex-col justify-around items-center rounded-xl flex-wrap">
+      <div className="h-80 w-72 bg-gradient-to-r from-blue-100 to-indigo-200 flex flex-col justify-around items-center rounded-xl flex-wrap">
         <img
           src={require(`../Images/${props.logo}`)}
           alt="logo"
