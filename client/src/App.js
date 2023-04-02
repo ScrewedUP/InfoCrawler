@@ -1,14 +1,26 @@
 import Navbar from "./Components/Navbar";
 import Description from "./Components/Description";
 import Card from "./Components/Card";
+import {data} from "./Data/data"
+import useMediaQuery from "./Hooks/useMediaQuery"
+
 function App() {
+  
+  const isMobile = useMediaQuery("(min-width: 800px)");
+  
+  const cardData = data.map((ele,index) =>{
+    return <Card key = {index} title={ele.title} logo = {ele.logo}/>
+  })
   return (
-    <div className="bg-gradient-to-t from-indigo-800 to-stone-900 h-screen w-screen">
-      <div className="flex flex-col justify-evenly items-center">
+    //bg-gradient-to-t from-indigo-800 to-stone-900
+    <div className={`w-screen ${isMobile ? "h-screen" : "h-max gap-y-8"} flex flex-col justify-evenly`}>
+      <div className="flex flex-col justify-evenly items-center h-max">
         <Navbar />
         <Description />
-        <Card />
       </div>
+      <div className={`flex ${isMobile ? "flex-row" : "flex-col gap-y-10"} justify-around items-center`}>
+        {cardData}
+        </div>
     </div>
   );
 }
