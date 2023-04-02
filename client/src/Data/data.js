@@ -1,18 +1,22 @@
 export const data = [
-    {
-        title : "NDTV",
-        logo : "NDTV_logo.png",
-    },
-    {
-        title : "IndiaToday",
-        logo : "IndiaToday.png",
-    },
-    {
-        title : "IndiaTv",
-        logo : "IndiaTv.png",
-    },
-    {
-        title : "IndianExpress",
-        logo : "IndianExpress.png",
-    }
-]
+  {
+    title: "NDTV",
+    logo: "NDTV_logo.png",
+    routelink: "ndtv",
+  },
+  {
+    title: "IndiaToday",
+    logo: "IndiaToday.png",
+    routelink: "indiatoday",
+  },
+  {
+    title: "IndiaTv",
+    logo: "IndiaTv.png",
+    routelink: "indiatv",
+  },
+  {
+    title: "IndianExpress",
+    logo: "IndianExpress.png",
+    routelink: "indianexpress",
+  },
+];

@@ -28,24 +28,25 @@ app = FastAPI()
 # )
 
 
-@app.get("/NDTV")
+@app.get("/ndtv")
 async def run_script():
     result = newsndtvscrapper()
     return {"result": result}
 
 
-@app.get("/India_Today")
+@app.get("/indiatoday")
 async def run_script():
     result = newsindiatodayscrapper()
     return {"result": result}
 
 
-@app.get("/Indian_Express")
+@app.get("/indianexpress")
 async def run_script():
     result = newsindianexpressscrapper()
     return {"result": result}
 
-@app.get("/India_Tv")
+
+@app.get("/indiatv")
 async def run_script():
     result = newsindiatvnewsscrapper()
     return {"result": result}
