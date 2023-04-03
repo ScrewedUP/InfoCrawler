@@ -1,6 +1,7 @@
 import pandas as pd
 from textblob import TextBlob
 import requests
+import re
 from bs4 import BeautifulSoup
 
 
@@ -20,6 +21,17 @@ def newsindiatvnewsscrapper():
     p_tags = soup.find_all("p", class_="dic")
     for p in p_tags:
         p_text.append(p.text)
+
+    a_text = []
+
+    div_tags = soup.find_all('div', {'class': 'content'})
+
+    # Find the <a> tag inside the div
+    for div in div_tags:
+        a_tag = div.find('a')
+        link = a_tag['href']
+        a_text.append(link)
+
 
     # create an empty list to store the sentiment results
     sentiment_list = []
@@ -42,7 +54,7 @@ def newsindiatvnewsscrapper():
     data1 = []
     for i in range(1, 11):
         data1.append(
-            {"Heading": h2_text[i], "Paragraph": p_text[i], "Sentiment": sentiment_list[i],
+            {"Heading": h2_text[i], "Paragraph": p_text[i], "Link": a_text[i], "Sentiment": sentiment_list[i],
              "Polarity": polarity_list[i]})
 
     return data1

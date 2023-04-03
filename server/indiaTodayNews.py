@@ -22,6 +22,16 @@ def newsindiatodayscrapper():
     for p in p_tags:
         p_text.append(p.text)
 
+    a_text = []
+
+    div_tags = soup.find_all('div', {'class': 'B1S3_content__wrap__9mSB6'})
+
+    # Find the <a> tag inside the div
+    for div in div_tags:
+        a_tag = div.find('a')
+        link = a_tag['href']
+        a_text.append("https://www.indiatoday.in"+link)
+
     # create an empty list to store the sentiment results
     sentiment_list = []
     polarity_list = []
@@ -43,7 +53,7 @@ def newsindiatodayscrapper():
     data1 = []
     for i in range(1, 11):
         data1.append(
-            {"Heading": h2_text[i], "Paragraph": p_text[i-1], "Sentiment": sentiment_list[i],
+            {"Heading": h2_text[i], "Paragraph": p_text[i-1],"Link":a_text[i-1] ,"Sentiment": sentiment_list[i],
              "Polarity": polarity_list[i]})
 
     return data1

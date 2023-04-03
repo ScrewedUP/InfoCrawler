@@ -22,6 +22,16 @@ def newsndtvscrapper():
     for p in p_tags:
         p_text.append(p.text)
 
+    a_text = []
+
+    div_tags = soup.find_all('div', {'class': 'news_Itm-cont'})
+
+    # Find the <a> tag inside the div
+    for div in div_tags:
+        a_tag = div.find('a')
+        link = a_tag['href']
+        a_text.append(link)
+
     data = {'Heading': h2_text}
     df = pd.DataFrame(data)
 
@@ -46,7 +56,7 @@ def newsndtvscrapper():
     data1 = []
     for i in range(10):
         data1.append(
-            {"Heading": h2_text[i], "Paragraph": p_text[i], "Sentiment": sentiment_list[i],
+            {"Heading": h2_text[i], "Paragraph": p_text[i],"Link": a_text[i], "Sentiment": sentiment_list[i],
              "Polarity": polarity_list[i]})
 
     return data1
