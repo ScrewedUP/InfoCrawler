@@ -1,39 +1,56 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import Navbar from "./Navbar";
 import { useEffect, useState } from "react";
+import { data } from "../Data/data";
+import NewsCard from "./NewsCard";
+// import useMediaQuery from "../Hooks/useMediaQuery";
 export default function NewsPage(props) {
+  // const isMobile = useMediaQuery("(min-width:800px)");
   const [dataFetched, setDataFetched] = useState([]);
-
+  console.log(props.dataName);
+  const remainingChannel = data.filter(
+    (obj) => obj.title.toLowerCase() !== props.dataName
+  );
+  console.log(remainingChannel);
   function fetchData() {
-    console.log("here");
-    const link = `/${props.data}`;
+    const link = `/${props.dataName}`;
     console.log(link);
     fetch(link)
       .then((response) => {
-        console.log("here also");
-        console.log(response);
         return response.json();
       })
-      .then((data) => {
-        console.log(data);
-        setDataFetched(data.result);
+      .then((dataRes) => {
+        console.log(dataRes);
+        setDataFetched(dataRes.result);
       });
   }
   useEffect(() => {
     fetchData();
   }, []);
   const content = dataFetched.map((ele, index) => {
-    console.log(ele.Heading);
     return (
-      <p className="w-[60vw] h-max" key={index}>
-        Heading : {ele.Heading}
-      </p>
+      <NewsCard
+        key={index}
+        heading={ele.Heading}
+        paragraph={ele.Paragraph}
+        sentiment={ele.Sentiment}
+        polarity={ele.Polarity}
+        link={ele.Link}
+      />
+    );
+  });
+  const channels = remainingChannel.map((ele, index) => {
+    return (
+      <div className="text-white text-xl h-max p-2 bg-cyan-500" key={index}>
+        {ele.title}
+      </div>
     );
   });
   return (
-    <div>
+    <div className="flex flex-col h-max justify-evenly gap-y-8 items-center">
       <Navbar />
-      {content}
+      <div className="flex justify-around w-[100%]">{channels}</div>
+      <div className="flex flex-col  items-center gap-y-8">{content}</div>
     </div>
   );
 }

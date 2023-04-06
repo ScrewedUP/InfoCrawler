@@ -10,10 +10,13 @@ import NewsPage from "./Components/NewsPage";
 const routeDefinitions = createRoutesFromElements(
   <Route>
     <Route path="/" element={<App />} />
-    <Route path="/ndtv" element={<NewsPage data="ndtv" />} />
-    <Route path="/indiatoday" element={<NewsPage data="indiatoday" />} />
-    <Route path="/indiatv" element={<NewsPage data="indiatv" />} />
-    <Route path="/indianexpress" element={<NewsPage data="indianexpress" />} />
+    <Route path="/ndtv" element={<NewsPage dataName="ndtv" />} />
+    <Route path="/indiatoday" element={<NewsPage dataName="indiatoday" />} />
+    <Route path="/indiatv" element={<NewsPage dataName="indiatv" />} />
+    <Route
+      path="/indianexpress"
+      element={<NewsPage dataName="indianexpress" />}
+    />
   </Route>
 );
 

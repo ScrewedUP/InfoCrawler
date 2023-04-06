@@ -5,7 +5,6 @@ export default function Card(props) {
   const navigate = useNavigate();
 
   const submitHandler = () => {
-    console.log("test here");
     navigate(props.routelink);
   };
   return (

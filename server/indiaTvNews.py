@@ -32,7 +32,6 @@ def newsindiatvnewsscrapper():
         link = a_tag['href']
         a_text.append(link)
 
-
     # create an empty list to store the sentiment results
     sentiment_list = []
     polarity_list = []
