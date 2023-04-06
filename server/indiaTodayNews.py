@@ -15,12 +15,14 @@ def newsindiatodayscrapper():
     for h2 in h2_tags:
         h2_text.append(h2.text)
 
-    data = {'Heading': h2_text}
-    df = pd.DataFrame(data)
+
     p_text = []
     p_tags = soup.find_all("p")
     for p in p_tags:
         p_text.append(p.text)
+
+    data = {'Heading': h2_text, 'Paragraph': p_text}
+    df = pd.DataFrame(data)
 
     a_text = []
 
@@ -40,7 +42,8 @@ def newsindiatodayscrapper():
     for index, row in df.iterrows():
         # create a TextBlob object
         blob = TextBlob(row['Heading'])
-        polarity = blob.sentiment.polarity
+        blob_1 = TextBlob(row['Paragraph'])
+        polarity = (blob.sentiment.polarity + blob_1.sentiment.polarity) / 2
         if polarity > 0:
             sentiment = "Positive"
         elif polarity == 0:
