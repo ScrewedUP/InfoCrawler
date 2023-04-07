@@ -32,7 +32,7 @@ def newsndtvscrapper():
         link = a_tag['href']
         a_text.append(link)
 
-    data = {'Heading': h2_text}
+    data = {'Heading': h2_text, 'Paragraph': p_text}
     df = pd.DataFrame(data)
 
     # create an empty list to store the sentiment results
@@ -43,7 +43,8 @@ def newsndtvscrapper():
     for index, row in df.iterrows():
         # create a TextBlob object
         blob = TextBlob(row['Heading'])
-        polarity = blob.sentiment.polarity
+        blob_1 = TextBlob(row['Paragraph'])
+        polarity = (blob.sentiment.polarity + blob_1.sentiment.polarity) / 2
         if polarity > 0:
             sentiment = "Positive"
         elif polarity == 0:
