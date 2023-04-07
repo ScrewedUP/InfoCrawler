@@ -15,7 +15,7 @@ export default function NewsPage(props) {
   function fetchData() {
     const link = `/${props.dataName}`;
     console.log(link);
-    fetch(link)
+    fetch("/NDTV")
       .then((response) => {
         return response.json();
       })
