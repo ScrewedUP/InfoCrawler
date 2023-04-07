@@ -15,13 +15,15 @@ def newsindiatvnewsscrapper():
     for h2 in h2_tags:
         h2_text.append(h2.text)
 
-
     p_text = []
     p_tags = soup.find_all("p", class_="dic")
     for p in p_tags:
         p_text.append(p.text)
 
-    data = {'Heading': h2_text,'Paragraph': p_text}
+    p_text = p_text[:11]
+    h2_text = h2_text[:11]
+
+    data = {'Heading': h2_text, 'Paragraph': p_text}
     df = pd.DataFrame(data)
 
     a_text = []
