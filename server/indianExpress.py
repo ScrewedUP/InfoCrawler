@@ -20,6 +20,9 @@ def newsindianexpressscrapper():
     for p in p_tags:
         p_text.append(p.text)
 
+    p_text = p_text[:11]
+    h2_text = h2_text[:11]
+
     data = {'Heading': h2_text, 'Paragraph': p_text}
     df = pd.DataFrame(data)
 

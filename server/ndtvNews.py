@@ -15,12 +15,19 @@ def newsndtvscrapper():
     for h2 in h2_tags:
         h2_text.append(h2.text)
 
+
+
+    # print(len(h2_text))
+
     p_tags = soup.find_all("p")
 
     p_text = []
     p_tags = soup.find_all("p")
     for p in p_tags:
         p_text.append(p.text)
+
+    p_text = p_text[:10]
+    h2_text = h2_text[:10]
 
     a_text = []
 
@@ -57,7 +64,9 @@ def newsndtvscrapper():
     data1 = []
     for i in range(10):
         data1.append(
-            {"Heading": h2_text[i], "Paragraph": p_text[i],"Link": a_text[i], "Sentiment": sentiment_list[i],
+            {"Heading": h2_text[i], "Paragraph": p_text[i], "Link": a_text[i], "Sentiment": sentiment_list[i],
              "Polarity": polarity_list[i]})
 
     return data1
+
+

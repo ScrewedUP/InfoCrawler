@@ -21,6 +21,9 @@ def newsindiatvnewsscrapper():
     for p in p_tags:
         p_text.append(p.text)
 
+    p_text = p_text[:11]
+    h2_text = h2_text[:11]
+
     data = {'Heading': h2_text,'Paragraph': p_text}
     df = pd.DataFrame(data)
 
@@ -33,6 +36,7 @@ def newsindiatvnewsscrapper():
         a_tag = div.find('a')
         link = a_tag['href']
         a_text.append(link)
+
 
     # create an empty list to store the sentiment results
     sentiment_list = []
