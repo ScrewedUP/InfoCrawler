@@ -1,7 +1,6 @@
 import pandas as pd
 from textblob import TextBlob
 import requests
-import re
 from bs4 import BeautifulSoup
 
 
